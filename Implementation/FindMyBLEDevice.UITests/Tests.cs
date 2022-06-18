@@ -37,29 +37,52 @@ namespace FindMyBLEDevice.UITests
             `app.Repl();`
 
             Search ("query") (until it shows up, in case of animations etc.) for UI-Elements via their "AutomationId". 
-            `AppResult[] results = app.WaitForElement(c => c.Marked("Btn_LearnMore"));`
+            `AppResult[] results = app.WaitForElement(c => c.Marked("Page_About"));`
 
             Search ("query") for UI-Elements via their "AutomationId". 
-            `appResult[] results2 = app.Query(c => c.Marked("Btn_LearnMore"));`
+            `appResult[] results2 = app.Query(c => c.Marked("Page_About"));`
             `Assert.IsTrue(results.Any());`
 
             Mimick user actions
-            `app.Tap(c => c.Marked("Btn_LearnMore"));`
+            `app.Tap(c => c.Marked("Btn_ID"));`
 
          */
+
+
+        [Test]
+        public void OpenAboutPage()
+        {
+
+            // Assert "About"-Screen is shown
+            AppResult[] results = app.Query(c => c.Marked("Page_About"));
+            Assert.IsTrue(results.Any());
+
+            // Tap on menu drawer
+            app.Tap(c => c.Marked("Open navigation drawer"));
+
+            // Wait for drawer
+            AppResult[] results2 = app.WaitForElement(c => c.Marked("FlyoutItem_About"));
+            Assert.IsTrue(results2.Any());
+
+            // Open devices page
+            app.Tap(c => c.Marked("FlyoutItem_About"));
+
+            // Assert that devices page (or at least one element from the page) is visible
+            AppResult[] results3 = app.WaitForElement(c => c.Marked("Page_About"));
+            Assert.IsTrue(results3.Any());
+
+        }
 
 
         [Test]
         public void OpenDevicesPage()
         {
 
-            // app.Repl();
-
             // Assert "About"-Screen is shown
-            AppResult[] results = app.Query(c => c.Marked("Btn_LearnMore"));
+            AppResult[] results = app.Query(c => c.Marked("Page_About"));
             Assert.IsTrue(results.Any());
 
-            // Tap on menu drawer (named "ok" for some reason..)
+            // Tap on menu drawer
             app.Tap(c => c.Marked("Open navigation drawer"));
 
             // Wait for drawer
@@ -70,10 +93,85 @@ namespace FindMyBLEDevice.UITests
             app.Tap(c => c.Marked("FlyoutItem_Devices"));
 
             // Assert that devices page (or at least one element from the page) is visible
-            AppResult[] results3 = app.WaitForElement(c => c.Marked("Label_SavedDevices"));
+            AppResult[] results3 = app.WaitForElement(c => c.Marked("Page_Devices"));
             Assert.IsTrue(results3.Any());
 
         }
+
+        [Test]
+        public void OpenStrengthPage()
+        {
+
+            // Assert "About"-Screen is shown
+            AppResult[] results = app.Query(c => c.Marked("Page_About"));
+            Assert.IsTrue(results.Any());
+
+            // Tap on menu drawer
+            app.Tap(c => c.Marked("Open navigation drawer"));
+
+            // Wait for drawer
+            AppResult[] results2 = app.WaitForElement(c => c.Marked("FlyoutItem_Strength"));
+            Assert.IsTrue(results2.Any());
+
+            // Open devices page
+            app.Tap(c => c.Marked("FlyoutItem_Strength"));
+
+            // Assert that devices page (or at least one element from the page) is visible
+            AppResult[] results3 = app.WaitForElement(c => c.Marked("Page_Strength"));
+            Assert.IsTrue(results3.Any());
+
+        }
+
+
+        [Test]
+        public void OpenMapsPage()
+        {
+
+            // Assert "About"-Screen is shown
+            AppResult[] results = app.Query(c => c.Marked("Page_About"));
+            Assert.IsTrue(results.Any());
+
+            // Tap on menu drawer
+            app.Tap(c => c.Marked("Open navigation drawer"));
+
+            // Wait for drawer
+            AppResult[] results2 = app.WaitForElement(c => c.Marked("FlyoutItem_Map"));
+            Assert.IsTrue(results2.Any());
+
+            // Open devices page
+            app.Tap(c => c.Marked("FlyoutItem_Map"));
+
+            // Assert that devices page (or at least one element from the page) is visible
+            AppResult[] results3 = app.WaitForElement(c => c.Marked("Page_Map"));
+            Assert.IsTrue(results3.Any());
+
+        }
+
+        [Test]
+        public void OpenSettingsPage()
+        {
+
+            // Assert "About"-Screen is shown
+            AppResult[] results = app.Query(c => c.Marked("Page_About"));
+            Assert.IsTrue(results.Any());
+
+            // Tap on menu drawer
+            app.Tap(c => c.Marked("Open navigation drawer"));
+
+            // Wait for drawer
+            AppResult[] results2 = app.WaitForElement(c => c.Marked("FlyoutItem_Settings"));
+            Assert.IsTrue(results2.Any());
+
+            // Open devices page
+            app.Tap(c => c.Marked("FlyoutItem_Settings"));
+
+            // Assert that devices page (or at least one element from the page) is visible
+            AppResult[] results3 = app.WaitForElement(c => c.Marked("Page_Settings"));
+            Assert.IsTrue(results3.Any());
+
+        }
+
+
 
 
     }

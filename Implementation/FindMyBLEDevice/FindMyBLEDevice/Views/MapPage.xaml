@@ -6,6 +6,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="FindMyBLEDevice.Views.MapPage"
+             AutomationId="Page_Map"
              Title="{Binding Title}">
     <ContentPage.Content>
         <StackLayout Orientation="Vertical" Padding="20,0,20,0" Spacing="0">
